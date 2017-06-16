@@ -73,12 +73,12 @@ namespace MinefieldTests
         TEST_METHOD(Mines_above_are_counted)
         {
             u_grid expectedGrid = BlankGridGenerator();
-            expectedGrid[1][0] = '*';
-            expectedGrid[1][1] = '1';
+            expectedGrid[1][1] = '*';
+            expectedGrid[1][0] = '1';
 
             MineGrid MinesAbove(expectedGrid);
             u_grid actualGrid = MinesAbove.Minesweep();
-            Assert::AreEqual(expectedGrid[1][1], actualGrid[1][1]);
+            Assert::AreEqual(expectedGrid[1][0], actualGrid[1][0]);
 
             /* -------------------- SECOND CASE -------------------- */
             u_grid expectedGrid2 = BlankGridGenerator();
