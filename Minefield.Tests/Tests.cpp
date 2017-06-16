@@ -70,7 +70,7 @@ namespace MinefieldTests
             Assert::AreEqual(expectedGrid2[3][4], actualGrid2[3][4]);
         }
 
-        TEST_METHOD(Mines_from_above_are_counted)
+        TEST_METHOD(Mines_are_counted)
         {
             u_grid expectedGrid = BlankGridGenerator();
             expectedGrid[1][0] = '*';
@@ -78,18 +78,16 @@ namespace MinefieldTests
 
             MineGrid MinesAbove(expectedGrid);
             u_grid actualGrid = MinesAbove.Minesweep();
-            AssertEntireGrid(expectedGrid, actualGrid);
+            Assert::AreEqual(expectedGrid[1][1], actualGrid[1][1]);
 
             /* -------------------- SECOND CASE -------------------- */
             u_grid expectedGrid2 = BlankGridGenerator();
-            expectedGrid2[1][0] = '*';
-            expectedGrid2[1][1] = '1';
             expectedGrid2[2][2] = '*';
-            expectedGrid2[2][3] = '1';
+            expectedGrid2[2][1] = '1';
 
             MineGrid MinesAbove2(expectedGrid2);
             u_grid actualGrid2 = MinesAbove2.Minesweep();
-            AssertEntireGrid(expectedGrid2, actualGrid2);
+            Assert::AreEqual(expectedGrid2[2][1], actualGrid2[2][1]);
         }
 	};
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <string>
 
 class MineGrid
 {
@@ -10,7 +11,9 @@ public:
     std::array<std::array<char, 5>, 5> Minesweep();
 
 private:
-    char SearchAround(int x, int y);
+    char SearchAround(const int x, const int y);
+
+    int ReturnNumberOfAdjacentMines(const int x, const int y);
 
     const int m_xSize = 5, m_ySize = 5;
 
