@@ -9,6 +9,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace MinefieldTests
 {
     const int xSize = 5, ySize = 5;
+    using grid = std::array<std::array<char, 5>, 5>;
 
     std::array<std::array<char, 5>, 5> BlankGridGenerator()
     {
@@ -41,32 +42,34 @@ namespace MinefieldTests
 		
 		TEST_METHOD(With_no_mines_the_grid_should_be_all_zeros)
 		{
-            std::array<std::array<char, 5>, 5> expectedGrid = BlankGridGenerator();
+            grid expectedGrid = BlankGridGenerator();
             
             MineGrid NoMines(expectedGrid);
-            std::array<std::array<char, 5>, 5> actualGrid = NoMines.Minesweep();
+            grid actualGrid = NoMines.Minesweep();
 
             AssertEntireGrid(expectedGrid, actualGrid);
 		}
 
         TEST_METHOD(Grid_squares_with_mines_should_not_have_a_number)
         {
-            std::array<std::array<char, 5>, 5> expectedGrid = BlankGridGenerator();
+            grid expectedGrid = BlankGridGenerator();
             expectedGrid[0][1] = '*';
 
             MineGrid MinePersistence(expectedGrid);
-            std::array<std::array<char, 5>, 5> actualGrid = MinePersistence.Minesweep();
+            grid actualGrid = MinePersistence.Minesweep();
 
             AssertEntireGrid(expectedGrid, actualGrid);
 
             /* -------------------- SECOND CASE -------------------- */
-            std::array<std::array<char, 5>, 5> expectedGrid2 = BlankGridGenerator();
+            grid expectedGrid2 = BlankGridGenerator();
             expectedGrid2[3][4] = '*';
 
             MineGrid MinePersistenceAlternate(expectedGrid2);
-            std::array<std::array<char, 5>, 5> actualGrid2 = MinePersistenceAlternate.Minesweep();
+            grid actualGrid2 = MinePersistenceAlternate.Minesweep();
 
             AssertEntireGrid(expectedGrid2, actualGrid2);
         }
+
+        
 	};
 }
