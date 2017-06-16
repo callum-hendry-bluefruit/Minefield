@@ -21,10 +21,25 @@ std::array<std::array<char, 5>, 5> MineGrid::Minesweep()
             }
             else
             {
-                outputGrid[x][y] = '0';
+                outputGrid[x][y] = SearchAround(x, y);
             }
         }
     }
 
     return outputGrid;
+}
+
+char MineGrid::SearchAround(int x, int y)
+{
+    int mineCount = 0;
+
+    /* ----- Above ----- */
+    if (y == 0) {}
+    else 
+    {
+        if (m_mineGrid[x][(y - 1)] == '*') { mineCount++; }
+    }
+    
+    char numberOfMines = '0' + mineCount;
+    return numberOfMines;
 }
