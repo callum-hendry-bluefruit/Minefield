@@ -70,7 +70,7 @@ namespace MinefieldTests
             Assert::AreEqual(expectedGrid2[3][4], actualGrid2[3][4]);
         }
 
-        TEST_METHOD(Mines_are_counted)
+        TEST_METHOD(Mines_above_are_counted)
         {
             u_grid expectedGrid = BlankGridGenerator();
             expectedGrid[1][0] = '*';
