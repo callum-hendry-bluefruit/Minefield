@@ -46,13 +46,7 @@ namespace MinefieldTests
             MineGrid NoMines(expectedGrid);
             std::array<std::array<char, 5>, 5> actualGrid = NoMines.Minesweep();
 
-            for (int i = 0; i < ySize; i++)
-            {
-                for (int j = 0; j < xSize; j++)
-                {
-                    Assert::AreEqual(expectedGrid[j][i], actualGrid[j][i]);
-                }
-            }
+            AssertEntireGrid(expectedGrid, actualGrid);
 		}
 
         TEST_METHOD(Grid_squares_with_mines_should_not_have_a_number)
@@ -63,13 +57,7 @@ namespace MinefieldTests
             MineGrid MinePersistence(expectedGrid);
             std::array<std::array<char, 5>, 5> actualGrid = MinePersistence.Minesweep();
 
-            for (int i = 0; i < ySize; i++)
-            {
-                for (int j = 0; j < xSize; j++)
-                {
-                    Assert::AreEqual(expectedGrid[j][i], actualGrid[j][i]);
-                }
-            }
+            AssertEntireGrid(expectedGrid, actualGrid);
 
             /* -------------------- SECOND CASE -------------------- */
             std::array<std::array<char, 5>, 5> expectedGrid2 = BlankGridGenerator();
@@ -78,18 +66,7 @@ namespace MinefieldTests
             MineGrid MinePersistenceAlternate(expectedGrid2);
             std::array<std::array<char, 5>, 5> actualGrid2 = MinePersistenceAlternate.Minesweep();
 
-            for (int y = 0; y < ySize; y++)
-            {
-                for (int x = 0; x < xSize; x++)
-                {
-                    Assert::AreEqual(expectedGrid2[x][y], actualGrid2[x][y]);
-                }
-            }
-        }
-
-        TEST_METHOD(Mines_from_above_are_counted)
-        {
-
+            AssertEntireGrid(expectedGrid2, actualGrid2);
         }
 	};
 }
