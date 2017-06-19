@@ -149,5 +149,25 @@ namespace MinefieldTests
             u_grid actualGrid2 = MinesAbove2.Minesweep();
             Assert::AreEqual(expectedGrid2[1][1], actualGrid2[1][1]);
         }
+
+        TEST_METHOD(Mines_to_the_above_left_are_counted)
+        {
+            u_grid expectedGrid = BlankGridGenerator();
+            expectedGrid[0][1] = '*';
+            expectedGrid[1][0] = '1';
+
+            MineGrid MinesAbove(expectedGrid);
+            u_grid actualGrid = MinesAbove.Minesweep();
+            Assert::AreEqual(expectedGrid[1][0], actualGrid[1][0]);
+
+            /* -------------------- SECOND CASE -------------------- */
+            u_grid expectedGrid2 = BlankGridGenerator();
+            expectedGrid2[1][3] = '*';
+            expectedGrid2[2][2] = '1';
+
+            MineGrid MinesAbove2(expectedGrid2);
+            u_grid actualGrid2 = MinesAbove2.Minesweep();
+            Assert::AreEqual(expectedGrid2[2][2], actualGrid2[2][2]);
+        }
 	};
 }
