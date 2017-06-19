@@ -36,7 +36,7 @@ char MineGrid::SearchAround(const int x, const int y)
     return numberOfMines;
 }
 
-int MineGrid::ReturnNumberOfAdjacentMines(const int y, const int x)
+int MineGrid::ReturnNumberOfAdjacentMines(const int x, const int y)
 {
     std::array<char, 8> m_currentSurroundings;
 
