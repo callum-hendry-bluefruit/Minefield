@@ -75,12 +75,12 @@ int MineGrid::ReturnNumberOfAdjacentMines(const int x, const int y)
         m_currentSurroundings[5] = m_mineGrid[(x - 1)][(y - 1)];
     }
 
-    /*if (((y - 1) >= 0) && ((x + 1) <= (m_xSize - 1)))
+    if ((x + 1) <= (m_xSize - 1) && ((y + 1) <= (m_ySize - 1)))
     { //Up-right
-        m_currentSurroundings[6] = m_mineGrid[(x + 1)][(y - 1)];
+        m_currentSurroundings[6] = m_mineGrid[(x + 1)][(y + 1)];
     }
 
-    if (((y + 1) <= (m_ySize - 1)) && ((x + 1) <= (m_xSize - 1)))
+    /*if (((y + 1) <= (m_ySize - 1)) && ((x + 1) <= (m_xSize - 1)))
     { //Down-right
         m_currentSurroundings[7] = m_mineGrid[(x + 1)][(y + 1)];
     }*/
