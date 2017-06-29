@@ -196,8 +196,8 @@ namespace MinefieldTests
             expectedGrid[2][2] = '*';
             expectedGrid[1][1] = '1';
 
-            MineGrid MinesBelowLeft(expectedGrid);
-            u_grid actualGrid = MinesBelowLeft.Minesweep();
+            MineGrid MinesTopRight(expectedGrid);
+            u_grid actualGrid = MinesTopRight.Minesweep();
             Assert::AreEqual(expectedGrid[1][1], actualGrid[1][1]);
 
             /* -------------------- SECOND CASE -------------------- */
@@ -205,8 +205,8 @@ namespace MinefieldTests
             expectedGrid2[3][4] = '*';
             expectedGrid2[2][3] = '1';
 
-            MineGrid MinesBelowLeft2(expectedGrid2);
-            u_grid actualGrid2 = MinesBelowLeft2.Minesweep();
+            MineGrid MinesTopRight2(expectedGrid2);
+            u_grid actualGrid2 = MinesTopRight2.Minesweep();
             Assert::AreEqual(expectedGrid2[2][3], actualGrid2[2][3]);
         }
 
@@ -216,8 +216,8 @@ namespace MinefieldTests
             expectedGrid[2][0] = '*';
             expectedGrid[1][1] = '1';
 
-            MineGrid MinesBelowLeft(expectedGrid);
-            u_grid actualGrid = MinesBelowLeft.Minesweep();
+            MineGrid MinesBelowRight(expectedGrid);
+            u_grid actualGrid = MinesBelowRight.Minesweep();
             Assert::AreEqual(expectedGrid[1][1], actualGrid[1][1]);
 
             /* -------------------- SECOND CASE -------------------- */
@@ -225,9 +225,29 @@ namespace MinefieldTests
             expectedGrid2[3][2] = '*';
             expectedGrid2[2][3] = '1';
 
-            MineGrid MinesBelowLeft2(expectedGrid2);
-            u_grid actualGrid2 = MinesBelowLeft2.Minesweep();
+            MineGrid MinesBelowRight2(expectedGrid2);
+            u_grid actualGrid2 = MinesBelowRight2.Minesweep();
             Assert::AreEqual(expectedGrid2[2][3], actualGrid2[2][3]);
+        }
+
+        TEST_METHOD(Mines_all_around_are_counted)
+        {
+            u_grid expectedGrid = BlankGridGenerator();
+            expectedGrid[2][2] = '8'; //center number
+            
+            expectedGrid[1][2] = '*';
+            expectedGrid[1][3] = '*';
+            expectedGrid[2][3] = '*';
+            expectedGrid[3][3] = '*';
+            expectedGrid[3][2] = '*';
+            expectedGrid[3][1] = '*';
+            expectedGrid[2][1] = '*';
+            expectedGrid[1][1] = '*';
+
+            MineGrid MinesAllAround(expectedGrid);
+            u_grid actualGrid = MinesAllAround.Minesweep();
+            
+            Assert::AreEqual(expectedGrid[2][2], actualGrid[2][2]);
         }
 	};
 }
